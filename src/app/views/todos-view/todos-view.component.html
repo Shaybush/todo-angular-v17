@@ -1,0 +1,23 @@
+<div class="todos-view-wrapper h-full flex justify-center items-center">
+  <div class="card">
+    <!-- header -->
+    <div class="card-header">
+      <app-todos-header/>
+
+      <hr class="text-muted">
+      <br>
+
+      <app-todos-input/>
+    </div>
+    <!-- body -->
+    <div class="card-body">
+      <app-todos-list [tasks]="tasks"/>
+
+      <br>
+      <hr class="text-muted">
+      <br>
+
+      <app-todos-list-statistics />
+    </div>
+  </div>
+</div>

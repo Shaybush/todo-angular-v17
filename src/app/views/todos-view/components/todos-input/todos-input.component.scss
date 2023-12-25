@@ -1,0 +1,39 @@
+$primary: rgba(232, 152, 115, 0.8);
+$primary-hover: rgb(232, 152, 115);
+$input-background: #232223;
+$secondary-color: #5C5C6E;
+
+.todos-input-wrapper{
+  ::placeholder {
+    color: $secondary-color;
+    opacity: 1; /* Firefox */
+  }
+
+  .todos-input{
+    &-task{
+      width: 95%;
+      input{
+        border: 1px solid $secondary-color !important;
+        background-color: $input-background;
+        padding: 17.5px 12px;
+        outline: none !important;
+        color: #fff;
+      }
+    }
+
+    &-submit{
+      padding: 0;
+      button{
+        background-color: $primary;
+        border: none;
+        padding: 8px;
+        cursor: pointer;
+        transition: 500ms ease-in;
+
+        &:hover{
+          background-color: $primary-hover;
+        }
+      }
+    }
+  }
+}

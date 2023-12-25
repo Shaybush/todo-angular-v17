@@ -1,0 +1,19 @@
+.todos-list-wrapper {
+  min-height: 200px;
+  max-height: 200px;
+  overflow-y: auto;
+
+  .todos-list {
+    &-check {
+      width: 1.5em;
+      height: 2em;
+      accent-color: white;
+      cursor: pointer;
+    }
+
+    &-description {
+      padding-left: 8px;
+      font-size: 22px;
+    }
+  }
+}

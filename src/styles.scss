@@ -1,1 +1,129 @@
 /* You can add global styles to this file, and also import other style files */
+$background-color: #2B2B3D;
+$input-background: #232223;
+$secondary-color: #5C5C6E;
+$primary-color: #b7b7b7ff;
+$text-color: #9494AC;
+$muted-color: #8E8CA4;
+$primary: #E89873;
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: $background-color;
+  color: $text-color;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+
+.items-center {
+  align-items: center;
+}
+
+.h-full {
+  height: 100vh;
+}
+
+.card {
+  background: $background-color;
+  box-shadow: 0 10px 13px -7px $input-background, 0 8px 15px 5px $input-background;
+  border-radius: 14px;
+  width: 800px;
+  padding: 32px 24px;
+  min-height: 400px;
+  max-height: calc(100% - 500px);
+
+  &-header {
+    width: 80%;
+    margin: 0 auto 12px auto;
+  }
+
+  &-body {
+    width: 80%;
+    margin: 0 auto;
+    padding: 8px 0;
+  }
+}
+
+.text {
+  &-main {
+    color: $primary;
+  }
+
+  &-secondary {
+    color: $secondary-color;
+  }
+
+  &-primary {
+    color: $primary-color;
+  }
+
+  &-muted {
+    color: $muted-color;
+  }
+
+  &-text {
+    color: $text-color;
+  }
+}
+
+.bg {
+  &-input {
+    background: $input-background;
+  }
+
+  &-background {
+    background: $background-color;
+  }
+
+  &-primary {
+    background: $primary-color;
+  }
+
+  &-secondary {
+    background: $secondary-color;
+  }
+}
+
+.col {
+  &-3 {
+    width: 25%;
+  }
+
+  &-6{
+    width: 50%;
+  }
+
+  &-9{
+    width: 75%;
+  }
+
+  &-12{
+    width: 100%;
+  }
+}
+
+.w-full{
+  width: 100%;
+}
+
