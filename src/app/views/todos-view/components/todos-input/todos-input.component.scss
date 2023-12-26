@@ -1,18 +1,16 @@
-$primary: rgba(232, 152, 115, 0.8);
-$primary-hover: rgb(232, 152, 115);
-$input-background: #232223;
-$secondary-color: #5C5C6E;
+@import "src/style/variables.scss";
 
-.todos-input-wrapper{
+.todos-input-wrapper {
   ::placeholder {
     color: $secondary-color;
     opacity: 1; /* Firefox */
   }
 
-  .todos-input{
-    &-task{
+  .todos-input {
+    &-task {
       width: 95%;
-      input{
+
+      input {
         border: 1px solid $secondary-color !important;
         background-color: $input-background;
         padding: 17.5px 12px;
@@ -21,17 +19,24 @@ $secondary-color: #5C5C6E;
       }
     }
 
-    &-submit{
+    &-submit {
       padding: 0;
-      button{
+
+      button {
         background-color: $primary;
+        opacity: .75;
         border: none;
         padding: 8px;
         cursor: pointer;
         transition: 500ms ease-in;
 
-        &:hover{
-          background-color: $primary-hover;
+        &:hover {
+          opacity: 1;
+        }
+
+        &:disabled {
+          opacity: .6;
+          cursor: not-allowed;
         }
       }
     }

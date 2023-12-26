@@ -1,0 +1,20 @@
+.card {
+  background: $background-color;
+  box-shadow: 0 10px 13px -7px $input-background, 0 8px 15px 5px $input-background;
+  border-radius: 14px;
+  width: 800px;
+  padding: 32px 24px;
+  min-height: 400px;
+  max-height: calc(100% - 300px);
+
+  &-header {
+    width: 80%;
+    margin: 0 auto 12px auto;
+  }
+
+  &-body {
+    width: 80%;
+    margin: 0 auto;
+    padding: 8px 0;
+  }
+}

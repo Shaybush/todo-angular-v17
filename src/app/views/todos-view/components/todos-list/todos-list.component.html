@@ -1,8 +1,8 @@
 <div class="todos-list-wrapper">
-  <div class="flex items-center">
-    <input class="todos-list-check" type="checkbox">
-    <p class="todos-list-description text-primary">Buy Water</p>
-  </div>
-
-
+  @for (task of tasks(); track task.id) {
+    <div class="flex items-center">
+      <input class="todos-list-check" (change)="updateTask(task.id)" [checked]="task.done" type="checkbox">
+      <p class="todos-list-description text-primary">{{ task.text }}</p>
+    </div>
+  }
 </div>

@@ -1,0 +1,39 @@
+.text {
+  &-main {
+    color: $primary;
+  }
+
+  &-secondary {
+    color: $secondary-color;
+  }
+
+  &-primary {
+    color: $primary-color;
+  }
+
+  &-muted {
+    color: $muted-color;
+  }
+
+  &-text {
+    color: $text-color;
+  }
+}
+
+.bg {
+  &-input {
+    background: $input-background;
+  }
+
+  &-background {
+    background: $background-color;
+  }
+
+  &-primary {
+    background: $primary-color;
+  }
+
+  &-secondary {
+    background: $secondary-color;
+  }
+}

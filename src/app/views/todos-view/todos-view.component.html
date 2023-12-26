@@ -7,17 +7,15 @@
       <hr class="text-muted">
       <br>
 
-      <app-todos-input/>
+      <app-todos-input (addTodo)="addTodo($event)"/>
     </div>
     <!-- body -->
     <div class="card-body">
       <app-todos-list [tasks]="tasks"/>
 
-      <br>
       <hr class="text-muted">
-      <br>
 
-      <app-todos-list-statistics />
+      <app-todos-list-statistics [tasks]="tasks"/>
     </div>
   </div>
 </div>

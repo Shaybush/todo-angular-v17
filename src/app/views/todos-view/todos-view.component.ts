@@ -20,14 +20,23 @@ import { TodosModel } from './models/todos.model';
 export class TodosViewComponent {
   tasks = signal<TodosModel[]>([
     {
-      text: 'But Water',
+      text: 'Buy Water',
       done: true,
-      id:1
+      id: crypto.randomUUID()
     },
     {
-      text: '',
+      text: 'Go to the gym',
       done: false,
-      id:2
+      id: crypto.randomUUID()
+    },
+    {
+      text: 'Drink beer with friends',
+      done: false,
+      id: crypto.randomUUID()
     }
   ]);
+
+  addTodo(todo: TodosModel): void {
+    this.tasks.update((tasks) => [...tasks, todo]);
+  }
 }
