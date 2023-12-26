@@ -1,3 +1,5 @@
+@import "src/style/variables.scss";
+
 .todos-list-wrapper {
   min-height: 200px;
   max-height: 200px;
@@ -7,7 +9,7 @@
     &-check {
       width: 1.5em;
       height: 2em;
-      accent-color: white;
+      accent-color: $white;
       cursor: pointer;
     }
 

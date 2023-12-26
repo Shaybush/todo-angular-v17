@@ -2,7 +2,7 @@
   @for (task of tasks(); track task.id) {
     <div class="flex items-center">
       <input class="todos-list-check" (change)="updateTask(task.id)" [checked]="task.done" type="checkbox">
-      <p class="todos-list-description text-primary">{{ task.text }}</p>
+      <p [appIsDone]="task.done" class="todos-list-description text-primary">{{ task.text }}</p>
     </div>
   }
 </div>
