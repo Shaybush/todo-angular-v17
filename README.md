@@ -4,7 +4,7 @@ Simple todo app with signals.
 
 ## Project Technologies - 
 
-<img src="https://skillicons.dev/icons?i=angular,typescript,webstorm&perline=7" />
+<img src="https://skillicons.dev/icons?i=angular,typescript,webstorm,html,css&perline=7" />
 
 ## Installation + Running The Application
 
