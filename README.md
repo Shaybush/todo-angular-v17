@@ -1,27 +1,31 @@
-# AngularV17TodoApp
+# Todo App Angular With Signals
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
+Simple todo app with signals.
 
-## Development server
+## Project Technologies - 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<img src="https://skillicons.dev/icons?i=angular,typescript&perline=7" />
 
-## Code scaffolding
+## Installation + Running The Application
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Steps: 
 
-## Build
+1. Clone the repository to your local machine:
+   ```sh
+   git clone https://github.com/Shaybush/todo-angular-v17.git
+   
+2. Open folder:
+   ```sh
+   cd todo-angular-v17
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3. Download Dependencies:
+   ```sh
+   npm i
 
-## Running unit tests
+4. Download Dependencies:
+   ```sh
+   npm start
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Project Photos
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![Screenshot 2024-08-06 at 16 10 11](https://github.com/user-attachments/assets/af2b0dcd-74fb-470d-b4a5-663aa545432c)
