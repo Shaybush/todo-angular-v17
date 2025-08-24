@@ -3,7 +3,7 @@ import { TodosViewComponent } from './views/todos-view/todos-view.component';
 
 export const routes: Routes = [
     {
-        path:'',
+        path: '',
         component: TodosViewComponent,
     },
     {
@@ -13,5 +13,9 @@ export const routes: Routes = [
     {
         path: 'posts',
         loadComponent: () => import('./views/posts-view/posts-view.component').then(c => c.PostsViewComponent),
+    },
+    {
+        path: 'unpermission', // 403
+        // loadComponent: () => import('./views/unpermission-view/unpermission-view.component').then(c
     }
 ];

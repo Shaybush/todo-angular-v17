@@ -20,6 +20,8 @@ export class PostsObservableService {
     this._loading.next(true);
     this._error.next(null);
 
+
+    // TODO: move to resovler to load before component init
     return this.http.get<Post[]>(`${this.baseUrl}/posts`).pipe(
       delay(500), // Simulate network delay
       map(posts => posts.map(post => ({
@@ -39,6 +41,7 @@ export class PostsObservableService {
     this._loading.next(true);
     this._error.next(null);
 
+    // TODO: move to resovler to load before component init
     return this.http.get<Post>(`${this.baseUrl}/posts/${id}`).pipe(
       delay(300),
       tap(() => this._loading.next(false)),
