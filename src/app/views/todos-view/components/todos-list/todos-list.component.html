@@ -1,5 +1,5 @@
 <div class="todos-list-wrapper">
-  @for (task of tasks(); track task.id) {
+  @for (task of todosService.tasks(); track task.id) {
     <div class="flex items-center">
       <input class="todos-list-check" (change)="updateTask(task.id)" [checked]="task.done" type="checkbox">
       <p [appIsDone]="task.done" class="todos-list-description text-primary">{{ task.text }}</p>

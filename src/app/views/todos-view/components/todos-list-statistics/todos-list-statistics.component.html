@@ -3,7 +3,7 @@
     <!-- completed tasks -->
     <p>Completed tasks:
       <span class="text-main">
-        {{ completedTasks() }}
+        {{ todosService.completedTasks().length }}
       </span>
     </p>
 
@@ -17,7 +17,7 @@
     <!-- total tasks -->
     <p>Total tasks:
       <span class="text-main">
-        {{ totalTasks() }}
+        {{ todosService.totalTasks() }}
       </span>
     </p>
 

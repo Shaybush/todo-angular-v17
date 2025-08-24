@@ -1,9 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { TodosHeaderComponent } from './components/todos-header/todos-header.component';
 import { TodosInputComponent } from './components/todos-input/todos-input.component';
 import { TodosListComponent } from './components/todos-list/todos-list.component';
 import { TodosListStatisticsComponent } from './components/todos-list-statistics/todos-list-statistics.component';
-import { TodosModel } from './models/todos.model';
+import { TodosService } from '../../services/todos.service';
 
 @Component({
   selector: 'app-todos-view',
@@ -18,25 +18,5 @@ import { TodosModel } from './models/todos.model';
   styleUrl: './todos-view.component.scss'
 })
 export class TodosViewComponent {
-  tasks = signal<TodosModel[]>([
-    {
-      text: 'Buy Water',
-      done: true,
-      id: crypto.randomUUID()
-    },
-    {
-      text: 'Go to the gym',
-      done: false,
-      id: crypto.randomUUID()
-    },
-    {
-      text: 'Drink beer with friends',
-      done: false,
-      id: crypto.randomUUID()
-    }
-  ]);
-
-  addTodo(todo: TodosModel): void {
-    this.tasks.update((tasks) => [...tasks, todo]);
-  }
+  constructor(public todosService: TodosService) {}
 }

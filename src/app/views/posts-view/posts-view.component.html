@@ -1,0 +1,185 @@
+<div class="posts-container">
+  <!-- Header -->
+  <div class="header">
+    <h1>Posts Management</h1>
+    <p class="subtitle">Compare Observable vs Promise patterns for API requests</p>
+  </div>
+
+  <!-- Tab Navigation -->
+  <div class="tab-navigation">
+    <button class="tab-button" [class.active]="activeTab() === 'observable'" (click)="switchTab('observable')">
+      Observable Pattern
+    </button>
+    <button class="tab-button" [class.active]="activeTab() === 'promise'" (click)="switchTab('promise')">
+      Promise Pattern
+    </button>
+  </div>
+
+  <!-- Observable Tab Content -->
+  @if (activeTab() === 'observable') {
+  <div class="tab-content">
+    <div class="pattern-info">
+      <h3>🔄 Observable Pattern</h3>
+      <p>Uses RxJS Observables with reactive streams, automatic subscription management, and real-time updates.</p>
+    </div>
+
+    <!-- Loading and Error States -->
+    <div class="status-bar">
+      @if (observableLoading()) {
+      <div class="loading">
+        <span class="spinner">⏳</span> Loading...
+      </div>
+      }
+      @if (observableError()) {
+      <div class="error">
+        ❌ {{ observableError() }}
+      </div>
+      }
+      @if (!observableLoading() && !observableError()) {
+      <div class="success">
+        ✅ {{ postsCount() }} posts loaded
+      </div>
+      }
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="refresh-btn" (click)="refreshObservableData()" [disabled]="observableLoading()">
+        🔄 Refresh Data
+      </button>
+    </div>
+
+    <!-- Create Post Form -->
+    <div class="create-post-form">
+      <h4>Create New Post</h4>
+      <div class="form-group">
+        <label for="obs-title">Title:</label>
+        <input id="obs-title" type="text" [value]="newPostTitle()" (input)="newPostTitle.set($event.target.value)"
+          placeholder="Enter post title">
+      </div>
+      <div class="form-group">
+        <label for="obs-body">Body:</label>
+        <textarea id="obs-body" [value]="newPostBody()" (input)="newPostBody.set($event.target.value)"
+          placeholder="Enter post content" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="obs-user">User:</label>
+        <select id="obs-user" [value]="selectedUserId()" (change)="selectedUserId.set(+$event.target.value)">
+          @for (user of observableUsers(); track user.id) {
+          <option [value]="user.id">
+            {{ user.name }}
+          </option>
+          }
+        </select>
+      </div>
+      <button class="create-btn" (click)="createPostWithObservable()"
+        [disabled]="observableLoading() || !newPostTitle() || !newPostBody()">
+        ➕ Create Post (Observable)
+      </button>
+    </div>
+
+    <!-- Posts List -->
+    <div class="posts-list">
+      @for (post of observablePosts(); track post.id) {
+      <div class="post-card">
+        <div class="post-header">
+          <h4>{{ post.title }}</h4>
+          <span class="post-author">by {{ getUserName(post.userId) }}</span>
+        </div>
+        <p class="post-body">{{ post.body }}</p>
+        <div class="post-actions">
+          <span class="post-id">ID: {{ post.id }}</span>
+          <button class="delete-btn" (click)="deletePostWithObservable(post.id)" [disabled]="observableLoading()">
+            🗑️ Delete
+          </button>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  }
+
+  <!-- Promise Tab Content -->
+  @if (activeTab() === 'promise') {
+  <div class="tab-content">
+    <div class="pattern-info">
+      <h3>🤝 Promise Pattern</h3>
+      <p>Uses traditional Promises with async/await, manual state management, and imperative approach.</p>
+    </div>
+
+    <!-- Loading and Error States -->
+    <div class="status-bar">
+      @if (promiseLoading()) {
+      <div class="loading">
+        <span class="spinner">⏳</span> Loading...
+      </div>
+      }
+      @if (promiseError()) {
+      <div class="error">
+        ❌ {{ promiseError() }}
+      </div>
+      }
+      @if (!promiseLoading() && !promiseError()) {
+      <div class="success">
+        ✅ {{ postsCount() }} posts loaded
+      </div>
+      }
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="refresh-btn" (click)="refreshPromiseData()" [disabled]="promiseLoading()">
+        🔄 Refresh Data
+      </button>
+    </div>
+
+    <!-- Create Post Form -->
+    <div class="create-post-form">
+      <h4>Create New Post</h4>
+      <div class="form-group">
+        <label for="prom-title">Title:</label>
+        <input id="prom-title" type="text" [value]="newPostTitle()" (input)="newPostTitle.set($event.target.value)"
+          placeholder="Enter post title">
+      </div>
+      <div class="form-group">
+        <label for="prom-body">Body:</label>
+        <textarea id="prom-body" [value]="newPostBody()" (input)="newPostBody.set($event.target.value)"
+          placeholder="Enter post content" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="prom-user">User:</label>
+        <select id="prom-user" [value]="selectedUserId()" (change)="selectedUserId.set(+$event.target.value)">
+          @for (user of promiseUsers(); track user.id) {
+          <option [value]="user.id">
+            {{ user.name }}
+          </option>
+          }
+        </select>
+      </div>
+      <button class="create-btn" (click)="createPostWithPromise()"
+        [disabled]="promiseLoading() || !newPostTitle() || !newPostBody()">
+        ➕ Create Post (Promise)
+      </button>
+    </div>
+
+    <!-- Posts List -->
+    <div class="posts-list">
+      @for (post of promisePosts(); track post.id) {
+      <div class="post-card">
+        <div class="post-header">
+          <h4>{{ post.title }}</h4>
+          <span class="post-author">by {{ getUserName(post.userId) }}</span>
+        </div>
+        <p class="post-body">{{ post.body }}</p>
+        <div class="post-actions">
+          <span class="post-id">ID: {{ post.id }}</span>
+          <button class="delete-btn" (click)="deletePostWithPromise(post.id)" [disabled]="promiseLoading()">
+            🗑️ Delete
+          </button>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  }
+</div>

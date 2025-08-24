@@ -1,6 +1,6 @@
-import { Component, Input, WritableSignal } from '@angular/core';
-import { TodosModel } from '../../models/todos.model';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { IsDoneDirective } from '../../directives/is-done.directive';
+import { TodosService } from '../../../../services/todos.service';
 
 @Component({
   selector: 'app-todos-list',
@@ -8,22 +8,14 @@ import { IsDoneDirective } from '../../directives/is-done.directive';
   imports: [
     IsDoneDirective
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './todos-list.component.html',
   styleUrl: './todos-list.component.scss'
 })
 export class TodosListComponent {
-  @Input({required: true}) tasks!: WritableSignal<TodosModel[]>;
+  constructor(public todosService: TodosService) {}
 
   updateTask(id: string): void {
-    this.tasks.update(tasks => tasks.map(task => {
-      if (task.id === id) {
-        return {
-          text: task.text,
-          done: !task.done,
-          id: task.id
-        };
-      }
-      return task;
-    }));
+    this.todosService.updateTask(id);
   }
 }

@@ -1,5 +1,5 @@
-import { Component, computed, Input, OnInit, Signal, WritableSignal } from '@angular/core';
-import { TodosModel } from '../../models/todos.model';
+import { Component, computed, Signal } from '@angular/core';
+import { TodosService } from '../../../../services/todos.service';
 
 @Component({
   selector: 'app-todos-list-statistics',
@@ -8,9 +8,8 @@ import { TodosModel } from '../../models/todos.model';
   templateUrl: './todos-list-statistics.component.html',
   styleUrl: './todos-list-statistics.component.scss'
 })
-export class TodosListStatisticsComponent{
-  @Input({ required: true }) tasks!: WritableSignal<TodosModel[]>;
-  totalTasks: Signal<number> = computed(() => this.tasks().length);
-  completedTasks: Signal<number> = computed(() => this.tasks().filter(task => task.done === true).length);
-  leftTasks: Signal<number> = computed(() => this.totalTasks() - this.completedTasks());
+export class TodosListStatisticsComponent {
+  leftTasks: Signal<number> = computed(() => this.todosService.totalTasks() - this.todosService.completedTasks().length);
+
+  constructor(public todosService: TodosService) {}
 }

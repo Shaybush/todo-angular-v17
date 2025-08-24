@@ -2,20 +2,21 @@
   <div class="card">
     <!-- header -->
     <div class="card-header">
-      <app-todos-header/>
+      <app-todos-header />
 
       <hr class="text-muted">
       <br>
 
-      <app-todos-input (addTodo)="addTodo($event)"/>
+      <app-todos-input />
     </div>
+
     <!-- body -->
     <div class="card-body">
-      <app-todos-list [tasks]="tasks"/>
+      <app-todos-list />
 
       <hr class="text-muted">
 
-      <app-todos-list-statistics [tasks]="tasks"/>
+      <app-todos-list-statistics />
     </div>
   </div>
 </div>

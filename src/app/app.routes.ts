@@ -9,5 +9,9 @@ export const routes: Routes = [
     {
         path: 'history',
         loadComponent: () => import('./views/todos-history-view/todos-history-view.component').then(c => c.TodosHistoryViewComponent),
+    },
+    {
+        path: 'posts',
+        loadComponent: () => import('./views/posts-view/posts-view.component').then(c => c.PostsViewComponent),
     }
 ];

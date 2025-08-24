@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { TodosModel } from '../../models/todos.model';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TodosService } from '../../../../services/todos.service';
 
 interface ITodosFormModel {
   text: FormControl<string>;
@@ -17,13 +17,12 @@ interface ITodosFormModel {
 })
 
 export class TodosInputComponent implements OnInit {
-  @Output() addTodo: EventEmitter<TodosModel> = new EventEmitter<TodosModel>();
-
-  // form
   todosForm: FormGroup<ITodosFormModel>;
 
-  constructor(private fb: FormBuilder) {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private todosService: TodosService
+  ) { }
 
   ngOnInit(): void {
     this.createTodoForm();
@@ -37,7 +36,13 @@ export class TodosInputComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.addTodo.emit({text: this.todosForm.controls.text.value, done: false, id: crypto.randomUUID()});
-    this.createTodoForm()
+    if (this.todosForm.valid) {
+      this.todosService.addTask({
+        text: this.todosForm.controls.text.value,
+        done: false,
+        id: crypto.randomUUID()
+      });
+      this.createTodoForm();
+    }
   }
 }
